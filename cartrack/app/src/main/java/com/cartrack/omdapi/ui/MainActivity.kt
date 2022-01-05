@@ -1,17 +1,19 @@
-package com.cartrack.omdapi.view
+package com.cartrack.omdapi.ui
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.cartrack.omdapi.Constants
 import com.cartrack.omdapi.R
-import com.cartrack.omdapi.service.api.RetrofitClient
-import com.cartrack.omdapi.service.api.models.SearchResponse
+import com.cartrack.omdapi.service.api.models.MediaContent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: SearchViewModel by lazy {
-        ViewModelProvider(this)[SearchViewModel::class.java]
+    private val viewModel: MediaViewModel by lazy {
+        ViewModelProvider(this)[MediaViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         val map: MutableMap<String, String> = mutableMapOf()
         map["s"] = "fire"
         map["type"] = "movie, series"
-        map["apikey"] = RetrofitClient.API_KEY
+        map["apikey"] = Constants.API_KEY
         viewModel.search(map)
     }
 
-    private fun handleResults(results: List<SearchResponse>) {
+    private fun handleResults(results: List<MediaContent>) {
         Toast.makeText(this, "results.size", Toast.LENGTH_LONG).show()
     }
 }
