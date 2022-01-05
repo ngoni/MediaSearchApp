@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.cartrack.omdapi"
-        minSdk buildVersions.mindSdk
+        minSdk buildVersions.minSdk
         targetSdk buildVersions.targetSdk
         versionCode appVersions.code
         versionName appVersions.name
