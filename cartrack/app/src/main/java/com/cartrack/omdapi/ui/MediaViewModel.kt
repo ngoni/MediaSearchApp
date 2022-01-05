@@ -3,7 +3,7 @@ package com.cartrack.omdapi.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.cartrack.omdapi.service.api.models.MediaContent
+import com.cartrack.omdapi.data.entities.MediaContent
 
 class MediaViewModel : ViewModel() {
 

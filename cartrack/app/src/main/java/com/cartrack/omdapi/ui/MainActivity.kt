@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.cartrack.omdapi.Constants
 import com.cartrack.omdapi.R
-import com.cartrack.omdapi.service.api.models.MediaContent
+import com.cartrack.omdapi.data.entities.MediaContent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

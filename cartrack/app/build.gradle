@@ -56,6 +56,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$pluginVersions.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$pluginVersions.hilt"
 
+    //Room
+    implementation "androidx.room:room-runtime:$libVersions.room"
+    implementation "androidx.room:room-ktx:$libVersions.room"
+    kapt "androidx.room:room-compiler:$libVersions.room"
+
     // Tests
     testImplementation "junit:junit:$testVersions.junit"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
