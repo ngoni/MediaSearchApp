@@ -20,6 +20,7 @@ buildscript {
                 constraintlayout   : '2.1.2',
                 lifecycleExtensions: '2.3.1',
                 material           : '1.4.0',
+                navigation         : '2.3.5',
                 coreKtx            : '1.7.0',
                 recyclerview       : '1.2.1'
         ]
@@ -43,6 +44,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$pluginVersions.gradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$pluginVersions.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$pluginVersions.hilt"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$supportVersions.navigation"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph.xml"
+    app:startDestination="@id/mediaListFragment">
+
+    <fragment
+        android:id="@+id/mediaListFragment"
+        android:name="com.cartrack.omdapi.ui.MediaListFragment"
+        android:label="MediaListFragment"
+        tools:layout="@layout/fragment_media_list">
+
+        <action
+            android:id="@+id/action_mediaListFragment_to_mediaDetailFragment"
+            app:destination="@id/mediaDetailFragment">
+            <argument
+                android:name="imdbId"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mediaDetailFragment"
+        android:name="com.cartrack.omdapi.ui.MediaDetailFragment"
+        android:label="MediaDetailFragment"
+        tools:layout="@layout/fragment_media_detail" />
+
+</navigation>

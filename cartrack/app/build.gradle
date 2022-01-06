@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "dagger.hilt.android.plugin"
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -45,6 +46,10 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$supportVersions.constraintlayout"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.recyclerview:recyclerview:$supportVersions.recyclerview"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$supportVersions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$supportVersions.navigation"
 
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libVersions.lifeCycleExtensions"
