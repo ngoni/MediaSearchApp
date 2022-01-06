@@ -8,6 +8,10 @@ plugins {
 android {
     compileSdk buildVersions.compileSdk
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.cartrack.omdapi"
         minSdk buildVersions.minSdk
@@ -39,6 +43,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportVersions.appcompat"
     implementation "com.google.android.material:material:$supportVersions.material"
     implementation "androidx.constraintlayout:constraintlayout:$supportVersions.constraintlayout"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:$supportVersions.recyclerview"
 
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libVersions.lifeCycleExtensions"
@@ -60,6 +66,10 @@ dependencies {
     implementation "androidx.room:room-runtime:$libVersions.room"
     implementation "androidx.room:room-ktx:$libVersions.room"
     kapt "androidx.room:room-compiler:$libVersions.room"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$libVersions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$libVersions.glide"
 
     // Tests
     testImplementation "junit:junit:$testVersions.junit"

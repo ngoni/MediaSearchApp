@@ -11,9 +11,9 @@ buildscript {
                 targetSdk : 31,
         ]
         pluginVersions = [
-                gradle : '7.0.4',
-                kotlin : '1.6.10',
-                hilt   : '2.38.1'
+                gradle: '7.0.4',
+                kotlin: '1.6.10',
+                hilt  : '2.38.1'
         ]
         supportVersions = [
                 appcompat          : '1.4.0',
@@ -21,16 +21,18 @@ buildscript {
                 lifecycleExtensions: '2.3.1',
                 material           : '1.4.0',
                 coreKtx            : '1.7.0',
+                recyclerview       : '1.2.1'
         ]
         libVersions = [
-                retrofit    : '2.9.0',
-                room        : '2.4.0',
-                coroutines  : '1.6.0',
-                lifeCycleExtensions : '2.4.0'
+                glide              : '4.12.0',
+                retrofit           : '2.9.0',
+                room               : '2.4.0',
+                coroutines         : '1.6.0',
+                lifeCycleExtensions: '2.4.0'
         ]
         testVersions = [
-                espressoCore        : '3.4.0',
-                junit               : '4.13.2',
+                espressoCore: '3.4.0',
+                junit       : '4.13.2',
         ]
     }
     repositories {
