@@ -38,10 +38,12 @@ class MediaDetailFragment : Fragment() {
 
     private fun fetchMedia() {
         val map: MutableMap<String, String> = mutableMapOf()
-        map["type"] = "movie, series"
-        map["apikey"] = Constants.API_KEY
         val imdbId = "tt0358670"
-        map["i"] = imdbId
+        map.apply {
+            put("i", imdbId)
+            put("type", "movie,series")
+            put("apikey", Constants.API_KEY)
+        }
         viewModel.fetchMediaDetail(imdbId, map)
     }
 

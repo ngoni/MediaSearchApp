@@ -31,8 +31,10 @@ class MediaListFragment : Fragment() {
     ): View {
         binding = FragmentMediaListBinding.inflate(inflater, container, false)
 
-        adapter = MediaListAdapter()
-        binding.recyclerview.adapter = adapter
+        MediaListAdapter().also {
+            adapter = it
+            binding.recyclerview.adapter = it
+        }
 
         searchMedia()
         observeViewModel()
@@ -42,9 +44,11 @@ class MediaListFragment : Fragment() {
 
     private fun searchMedia() {
         val map: MutableMap<String, String> = mutableMapOf()
-        map["s"] = "fire"
-        map["type"] = "movie, series"
-        map["apikey"] = Constants.API_KEY
+        map.apply {
+            put("s", "fire")
+            put("type", "movie,series")
+            put("apikey", Constants.API_KEY)
+        }
         viewModel.searchMedia(map)
     }
 
