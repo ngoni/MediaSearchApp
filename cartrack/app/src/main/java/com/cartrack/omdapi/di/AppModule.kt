@@ -42,7 +42,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providMediaDao(db: LocalDatabase) = db.mediaDao()
+    fun provideMediaDao(db: LocalDatabase) = db.mediaDao()
 
     @Singleton
     @Provides

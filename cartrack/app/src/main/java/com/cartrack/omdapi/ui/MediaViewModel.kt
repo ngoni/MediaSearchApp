@@ -1,22 +1,25 @@
 package com.cartrack.omdapi.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cartrack.omdapi.data.entities.MediaContent
+import com.cartrack.omdapi.data.repository.MediaRepository
+import com.cartrack.omdapi.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MediaViewModel : ViewModel() {
+@HiltViewModel
+class MediaViewModel @Inject constructor(private val repository: MediaRepository) :
+    ViewModel() {
 
+    var mediaList: LiveData<Resource<List<MediaContent>>>? = null
+    var media: LiveData<Resource<MediaContent>>? = null
 
-
-    private var _results = MutableLiveData<List<MediaContent>>()
-    val results: LiveData<List<MediaContent>>
-        get() = _results
-
-    init {
-        _results.value = listOf()
+    fun searchMedia(options: Map<String, String>) {
+        mediaList = repository.searchMedia(options)
     }
 
-    fun search(options: Map<String, String>) {
+    fun fetchMediaDetail(imdbId: String, options: Map<String, String>) {
+        media = repository.fetchMediaDetail(imdbId, options)
     }
 }

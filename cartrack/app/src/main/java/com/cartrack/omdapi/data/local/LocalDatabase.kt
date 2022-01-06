@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.cartrack.omdapi.data.entities.MediaContent
+import com.cartrack.omdapi.data.entities.Search
 
-@Database(entities = [MediaContent::class], version = 1, exportSchema = false)
+@Database(entities = [MediaContent::class, Search::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun mediaDao(): MediaDao
@@ -21,7 +24,7 @@ abstract class LocalDatabase : RoomDatabase() {
             }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context, LocalDatabase::class.java, "media")
+            Room.databaseBuilder(context, LocalDatabase::class.java, "media.db")
                 .fallbackToDestructiveMigration()
                 .build()
     }

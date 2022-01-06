@@ -13,11 +13,11 @@ class MediaRepository @Inject constructor(
     fun searchMedia(options: Map<String, String>) = performGetOperation(
         databaseQuery = { localDataSource.getAllMedia() },
         networkCall = { remoteDataSource.searchMedia(options) },
-        saveCallResult = { localDataSource.insertAll(it) }
+        saveCallResult = { localDataSource.insertAll(it.search) }
     )
 
-    fun fetchMediaDetail(mediaID: String, options: Map<String, String>) = performGetOperation(
-        databaseQuery = { localDataSource.getMedia(mediaID) },
+    fun fetchMediaDetail(imdbId: String, options: Map<String, String>) = performGetOperation(
+        databaseQuery = { localDataSource.getMedia(imdbId) },
         networkCall = { remoteDataSource.fetchMediaDetail(options) },
         saveCallResult = { localDataSource.insert(it) }
     )
