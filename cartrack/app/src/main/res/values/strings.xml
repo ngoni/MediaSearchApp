@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OmdApi</string>
+    <string name="no_data_found">No Data Found</string>
 </resources>
