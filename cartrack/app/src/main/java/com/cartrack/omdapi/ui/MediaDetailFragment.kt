@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.cartrack.omdapi.Constants
+import androidx.navigation.fragment.navArgs
+import com.cartrack.omdapi.Constants.API_KEY_VALUE
+import com.cartrack.omdapi.Constants.KEY_API_KEY
+import com.cartrack.omdapi.Constants.KEY_IMDB_ID
 import com.cartrack.omdapi.databinding.FragmentMediaDetailBinding
 import com.cartrack.omdapi.utils.Resource
 import com.cartrack.omdapi.utils.ViewUtils.hideProgressBar
@@ -37,14 +40,13 @@ class MediaDetailFragment : Fragment() {
     }
 
     private fun fetchMedia() {
+        val args : MediaDetailFragmentArgs by navArgs()
         val map: MutableMap<String, String> = mutableMapOf()
-        val imdbId = "tt0358670"
         map.apply {
-            put("i", imdbId)
-            put("type", "movie,series")
-            put("apikey", Constants.API_KEY)
+            put(KEY_IMDB_ID, args.imdbId)
+            put(KEY_API_KEY, API_KEY_VALUE)
         }
-        viewModel.fetchMediaDetail(imdbId, map)
+        viewModel.fetchMediaDetail(args.imdbId, map)
     }
 
     private fun observeViewModel() {

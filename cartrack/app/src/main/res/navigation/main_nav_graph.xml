@@ -13,11 +13,7 @@
 
         <action
             android:id="@+id/action_mediaListFragment_to_mediaDetailFragment"
-            app:destination="@id/mediaDetailFragment">
-            <argument
-                android:name="imdbId"
-                app:argType="string" />
-        </action>
+            app:destination="@+id/mediaDetailFragment" />
 
     </fragment>
 
@@ -25,6 +21,12 @@
         android:id="@+id/mediaDetailFragment"
         android:name="com.cartrack.omdapi.ui.MediaDetailFragment"
         android:label="MediaDetailFragment"
-        tools:layout="@layout/fragment_media_detail" />
+        tools:layout="@layout/fragment_media_detail">
+
+        <argument
+            android:name="imdbId"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>
