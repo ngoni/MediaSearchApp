@@ -67,6 +67,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$pluginVersions.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$pluginVersions.hilt"
 
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+
     //Room
     implementation "androidx.room:room-runtime:$libVersions.room"
     implementation "androidx.room:room-ktx:$libVersions.room"
