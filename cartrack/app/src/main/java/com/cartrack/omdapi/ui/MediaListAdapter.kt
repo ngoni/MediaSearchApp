@@ -9,8 +9,10 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cartrack.omdapi.R
 import com.cartrack.omdapi.data.entities.SearchContent
 import com.cartrack.omdapi.databinding.FragmentMediaItemBinding
+import com.cartrack.omdapi.utils.StringUtils
 
 class MediaListAdapter(
     private val callback: (String) -> Unit,
@@ -33,7 +35,8 @@ class MediaListAdapter(
         val item = values[position]
         holder.apply {
             mediaTitle.text = item.title
-            mediaType.text = item.type.name
+            mediaReleaseYear.text =
+                String.format(StringUtils.getString(R.string.release_date_text), item.year)
             Glide.with(imageView.context)
                 .load(item.poster)
                 .placeholder(ColorDrawable(Color.GRAY))
@@ -49,7 +52,7 @@ class MediaListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         val imageView: AppCompatImageView = binding.mediaPosterImage
         val mediaTitle: AppCompatTextView = binding.mediaTitle
-        val mediaType: AppCompatTextView = binding.mediaType
+        val mediaReleaseYear: AppCompatTextView = binding.mediaReleaseYear
         val mediaItemContainer: ConstraintLayout = binding.mediaItemContainer
     }
 
