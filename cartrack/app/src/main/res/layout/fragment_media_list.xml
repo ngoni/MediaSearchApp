@@ -19,11 +19,11 @@
         tools:listitem="@layout/fragment_media_item" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/no_data_found"
+        android:id="@+id/results_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp16"
-        android:text="@string/no_data_found"
+        android:text="@string/no_results"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

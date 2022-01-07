@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -53,15 +52,25 @@ class MediaDetailFragment : Fragment() {
         viewModel.media?.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
-                    Toast.makeText(context, "${it.data}", Toast.LENGTH_SHORT).show()
                     hideProgressBar(binding.progressBar)
+                    binding.apply {
+                        mediaDetailContainer.visibility = View.VISIBLE
+                        resultsState.visibility = View.GONE
+                    }
+                    TODO("finish binding to detail screen")
                 }
                 Resource.Status.ERROR -> {
-                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                     hideProgressBar(binding.progressBar)
+                    binding.resultsState.apply {
+                        text = it.message
+                        visibility = View.VISIBLE
+                    }
                 }
                 Resource.Status.LOADING -> {
-                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+                    binding.apply {
+                        mediaDetailContainer.visibility = View.GONE
+                        resultsState.visibility = View.GONE
+                    }
                     showProgressBar(binding.progressBar)
                 }
             }
