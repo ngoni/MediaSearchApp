@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.cartrack.omdapi.R
 import com.cartrack.omdapi.data.entities.SearchContent
 import com.cartrack.omdapi.databinding.FragmentMediaItemBinding
-import com.cartrack.omdapi.utils.StringUtils
+import com.cartrack.omdapi.utils.StringUtils.getString
 
 class MediaListAdapter(
     private val callback: (String) -> Unit,
@@ -36,10 +36,11 @@ class MediaListAdapter(
         holder.apply {
             mediaTitle.text = item.title
             mediaReleaseYear.text =
-                String.format(StringUtils.getString(R.string.release_date_text), item.year)
+                String.format(getString(R.string.release_date_text), item.year)
             Glide.with(imageView.context)
                 .load(item.poster)
                 .placeholder(ColorDrawable(Color.GRAY))
+                .centerCrop()
                 .circleCrop()
                 .into(imageView)
             mediaItemContainer.setOnClickListener { callback.invoke(item.imdbID) }

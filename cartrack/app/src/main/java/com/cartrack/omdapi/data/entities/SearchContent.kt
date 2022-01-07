@@ -16,7 +16,7 @@ data class SearchContent(
     val year: String,
 
     @SerializedName("Type")
-    val type: Type,
+    val type: Type?,
 
     @SerializedName("Poster")
     val poster: String

@@ -5,14 +5,16 @@
     android:id="@+id/media_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:paddingStart="@dimen/dp16"
+    android:paddingEnd="@dimen/dp16">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/media_poster_image"
         android:layout_width="@dimen/dp60"
         android:layout_height="@dimen/dp60"
-        android:layout_marginStart="@dimen/dp0"
         android:layout_marginTop="@dimen/dp8"
         android:layout_marginBottom="@dimen/dp8"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,13 +29,13 @@
         android:layout_marginStart="@dimen/dp16"
         android:ellipsize="end"
         android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintBottom_toTopOf="@+id/media_type"
+        app:layout_constraintBottom_toTopOf="@+id/media_release_year"
         app:layout_constraintLeft_toRightOf="@+id/media_poster_image"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/media_title_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/media_type"
+        android:id="@+id/media_release_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp16"
