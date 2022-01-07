@@ -16,11 +16,12 @@ class Converters {
     @TypeConverter
     fun fromRating(ratings: List<Rating>): String = Gson().toJson(ratings)
 
-//    @TypeConverter
-//    fun toType(string: String): Type {
-//        return Type.fromValue(string)
-//    }
-//
-//    @TypeConverter
-//    fun fromType(type: Type): String = type.name
+    @TypeConverter
+    fun toType(string: String): Type {
+        val type = object : TypeToken<Type>() {}.type
+        return Gson().fromJson(string, type)
+    }
+
+    @TypeConverter
+    fun fromType(type: Type): String = Gson().toJson(type)
 }

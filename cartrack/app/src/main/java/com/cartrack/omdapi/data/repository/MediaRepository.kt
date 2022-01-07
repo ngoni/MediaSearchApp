@@ -16,7 +16,7 @@ class MediaRepository @Inject constructor(
         saveCallResult = { localDataSource.insertAll(it.search) }
     )
 
-    fun fetchMediaDetail(imdbId: String, options: Map<String, String>) = performGetOperation(
+    fun getMediaDetail(imdbId: String, options: Map<String, String>) = performGetOperation(
         databaseQuery = { localDataSource.getMedia(imdbId) },
         networkCall = { remoteDataSource.fetchMediaDetail(options) },
         saveCallResult = { localDataSource.insert(it) }

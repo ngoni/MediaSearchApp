@@ -9,13 +9,14 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cartrack.omdapi.data.entities.MediaContent
+import com.cartrack.omdapi.data.entities.SearchContent
 import com.cartrack.omdapi.databinding.FragmentMediaItemBinding
-import com.cartrack.omdapi.ui.placeholder.PlaceholderContent.PlaceholderItem
 
 class MediaListAdapter(
-    private val values: List<PlaceholderItem>
+    private val callback: (String) -> Unit,
 ) : RecyclerView.Adapter<MediaListAdapter.ViewHolder>() {
+
+    private val values: MutableList<SearchContent> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -31,16 +32,14 @@ class MediaListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.apply {
-            mediaTitle.text = item.content
-            mediaDescription.text = item.content
+            mediaTitle.text = item.title
+            mediaType.text = item.type.name
             Glide.with(imageView.context)
-                .load("url")
+                .load(item.poster)
                 .placeholder(ColorDrawable(Color.GRAY))
                 .circleCrop()
                 .into(imageView)
-            mediaItemContainer.setOnClickListener{
-                TODO("handle click event")
-            }
+            mediaItemContainer.setOnClickListener { callback.invoke(item.imdbID) }
         }
     }
 
@@ -50,12 +49,16 @@ class MediaListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         val imageView: AppCompatImageView = binding.mediaPosterImage
         val mediaTitle: AppCompatTextView = binding.mediaTitle
-        val mediaDescription: AppCompatTextView = binding.mediaDescription
-        val mediaItemContainer : ConstraintLayout = binding.mediaItemContainer
+        val mediaType: AppCompatTextView = binding.mediaType
+        val mediaItemContainer: ConstraintLayout = binding.mediaItemContainer
     }
 
-    fun setData(items: List<MediaContent>?) {
-
+    fun updateData(items: List<SearchContent>?) {
+        items?.let {
+            values.clear()
+            values.addAll(items)
+            notifyItemRangeChanged(0, items.size)
+        }
     }
 
 }

@@ -85,7 +85,7 @@
             android:layout_marginTop="@dimen/dp24"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rating_container"
-            tools:text="@string/release_date_text" />
+            tools:text="Release date: January 9, 2019" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/director"
@@ -95,7 +95,7 @@
             android:layout_marginTop="@dimen/dp24"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/release_date"
-            tools:text="@string/director_text" />
+            tools:text="Director: Dean John" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/writer"
@@ -105,7 +105,7 @@
             android:layout_marginTop="@dimen/dp24"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/director"
-            tools:text="@string/writers_text" />
+            tools:text="Writer(s): Dean John, Chris Rome" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/storyline"
@@ -126,7 +126,7 @@
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginTop="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
-            app:breakStategy="balanced"
+            android:breakStrategy="balanced"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/storyline"

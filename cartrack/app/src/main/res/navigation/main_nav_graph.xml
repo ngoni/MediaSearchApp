@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_media_list">
 
         <action
-            android:id="@+id/action_mediaListFragment_to_mediaDetailFragment"
+            android:id="@+id/action_open_media_detail_screen"
             app:destination="@+id/mediaDetailFragment" />
 
     </fragment>

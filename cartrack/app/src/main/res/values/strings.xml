@@ -5,12 +5,12 @@
     <string name="metascore">Metascore</string>
     <string name="storyline">Storyline</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="writers_text">Writer(s): Dean John, Chris Rome</string>
-    <string name="director_text">Director: Dean John</string>
-    <string name="release_date_text">Release date: January 9, 2019</string>
+    <string name="writers_text">Writer(s): %s</string>
+    <string name="director_text">Director: %s</string>
+    <string name="release_date_text">Release date: %s</string>
     <string name="metascore_value">N/A</string>
     <string name="imdb_value">7.6/10</string>
-    <string name="media_description_text">Description</string>
+    <string name="media_genre_text">Drama</string>
     <string name="media_title_text">Title</string>
     <string name="toolbar_title_text">Toolbar Title</string>
 </resources>

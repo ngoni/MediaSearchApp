@@ -1,5 +1,7 @@
 package com.cartrack.omdapi.ui
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.cartrack.omdapi.Constants.API_KEY_VALUE
 import com.cartrack.omdapi.Constants.KEY_API_KEY
 import com.cartrack.omdapi.Constants.KEY_IMDB_ID
+import com.cartrack.omdapi.R
+import com.cartrack.omdapi.data.entities.MediaContent
 import com.cartrack.omdapi.databinding.FragmentMediaDetailBinding
 import com.cartrack.omdapi.utils.Resource
 import com.cartrack.omdapi.utils.ViewUtils.hideProgressBar
@@ -39,13 +44,13 @@ class MediaDetailFragment : Fragment() {
     }
 
     private fun fetchMedia() {
-        val args : MediaDetailFragmentArgs by navArgs()
+        val args: MediaDetailFragmentArgs by navArgs()
         val map: MutableMap<String, String> = mutableMapOf()
         map.apply {
             put(KEY_IMDB_ID, args.imdbId)
             put(KEY_API_KEY, API_KEY_VALUE)
         }
-        viewModel.fetchMediaDetail(args.imdbId, map)
+        viewModel.getMediaDetail(args.imdbId, map)
     }
 
     private fun observeViewModel() {
@@ -57,7 +62,7 @@ class MediaDetailFragment : Fragment() {
                         mediaDetailContainer.visibility = View.VISIBLE
                         resultsState.visibility = View.GONE
                     }
-                    TODO("finish binding to detail screen")
+                    bindDataToUi(it.data)
                 }
                 Resource.Status.ERROR -> {
                     hideProgressBar(binding.progressBar)
@@ -75,5 +80,22 @@ class MediaDetailFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun bindDataToUi(data: MediaContent?) {
+        data?.let {
+            binding.apply {
+                imdbRating.text = data.imdbRating
+                metascoreRating.text = data.metascore
+                releaseDate.text = String.format(getString(R.string.release_date_text), data.released)
+                director.text = String.format(getString(R.string.director_text), data.director)
+                writer.text = String.format(getString(R.string.writers_text), data.writer)
+                storylineDescription.text = data.plot
+                Glide.with(requireContext())
+                    .load(data.poster)
+                    .placeholder(ColorDrawable(Color.GRAY))
+                    .into(mediaPosterImage)
+            }
+        }
     }
 }

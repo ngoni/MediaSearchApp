@@ -27,13 +27,13 @@
         android:layout_marginStart="@dimen/dp16"
         android:ellipsize="end"
         android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintBottom_toTopOf="@+id/media_description"
+        app:layout_constraintBottom_toTopOf="@+id/media_type"
         app:layout_constraintLeft_toRightOf="@+id/media_poster_image"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/media_title_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/media_description"
+        android:id="@+id/media_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp16"
@@ -42,6 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/media_poster_image"
         app:layout_constraintTop_toBottomOf="@+id/media_title"
-        tools:text="@string/media_description_text" />
+        tools:text="@string/media_genre_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

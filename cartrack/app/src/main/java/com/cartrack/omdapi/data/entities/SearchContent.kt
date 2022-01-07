@@ -6,18 +6,6 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "SearchContent")
 data class SearchContent(
-
-    @SerializedName("Search")
-    val search: List<Search>,
-
-    val totalResults: String,
-
-    @SerializedName("Response")
-    val response: String
-)
-
-data class Search(
-
     @PrimaryKey
     val imdbID: String,
 
@@ -48,3 +36,4 @@ enum class Type(val value: String) {
         }
     }
 }
+
