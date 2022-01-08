@@ -1,4 +1,4 @@
-# OmdApi
+# Media Dispaly Demo App
 
 This is a demo app that queries the OmdApi for a media content.
 The list of returned movies,series is then displayed in the app.
