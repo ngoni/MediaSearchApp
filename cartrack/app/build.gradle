@@ -3,10 +3,15 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "dagger.hilt.android.plugin"
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk buildVersions.compileSdk
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.cartrack.omdapi"
@@ -39,6 +44,12 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportVersions.appcompat"
     implementation "com.google.android.material:material:$supportVersions.material"
     implementation "androidx.constraintlayout:constraintlayout:$supportVersions.constraintlayout"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:$supportVersions.recyclerview"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$supportVersions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$supportVersions.navigation"
 
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libVersions.lifeCycleExtensions"
@@ -56,10 +67,18 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$pluginVersions.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$pluginVersions.hilt"
 
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$libVersions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okhttp"
+
     //Room
     implementation "androidx.room:room-runtime:$libVersions.room"
     implementation "androidx.room:room-ktx:$libVersions.room"
     kapt "androidx.room:room-compiler:$libVersions.room"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$libVersions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$libVersions.glide"
 
     // Tests
     testImplementation "junit:junit:$testVersions.junit"
