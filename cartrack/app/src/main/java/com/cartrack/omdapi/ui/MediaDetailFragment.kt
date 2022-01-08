@@ -31,6 +31,10 @@ class MediaDetailFragment : Fragment() {
         ViewModelProvider(this)[MediaViewModel::class.java]
     }
 
+    private val toolBarTitleViewModel: ToolBarTitleViewModel by lazy {
+        ViewModelProvider(requireActivity())[ToolBarTitleViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,8 +63,9 @@ class MediaDetailFragment : Fragment() {
                 Resource.Status.SUCCESS -> {
                     hideProgressBar(binding.progressBar)
                     binding.apply {
-                        mediaDetailContainer.visibility = View.VISIBLE
-                        resultsState.visibility = View.GONE
+                        mediaDetailContainer.visibility =
+                            if (it.data != null) View.VISIBLE else View.GONE
+                        resultsState.visibility = if (it.data == null) View.VISIBLE else View.GONE
                     }
                     bindDataToUi(it.data)
                 }
@@ -87,14 +92,18 @@ class MediaDetailFragment : Fragment() {
             binding.apply {
                 imdbRating.text = data.imdbRating
                 metascoreRating.text = data.metascore
-                releaseDate.text = String.format(getString(R.string.release_date_text), data.released)
+                releaseDate.text =
+                    String.format(getString(R.string.release_date_text), data.released)
                 director.text = String.format(getString(R.string.director_text), data.director)
                 writer.text = String.format(getString(R.string.writers_text), data.writer)
                 storylineDescription.text = data.plot
+
                 Glide.with(requireContext())
                     .load(data.poster)
                     .placeholder(ColorDrawable(Color.GRAY))
                     .into(mediaPosterImage)
+
+                toolBarTitleViewModel.setToolbarTitle(data.title)
             }
         }
     }

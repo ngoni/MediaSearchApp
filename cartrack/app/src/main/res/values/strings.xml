@@ -13,4 +13,5 @@
     <string name="media_genre_text">Drama</string>
     <string name="media_title_text">Title</string>
     <string name="toolbar_title_text">Toolbar Title</string>
+    <string name="title_media_list_screen">Media List Screen</string>
 </resources>

@@ -89,6 +89,7 @@ class MediaListFragment : Fragment() {
                             visibility = View.VISIBLE
                         }
                     } else {
+                        binding.resultsState.visibility = View.GONE
                         mediaListAdapter.updateData(it.data)
                     }
                 }
