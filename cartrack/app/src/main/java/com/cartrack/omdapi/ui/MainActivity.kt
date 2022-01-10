@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         val destinationChangedListener =
             NavController.OnDestinationChangedListener { controller, destination, arguments ->
                 toolBarTitleViewModel.setDestination(destination)
+
+                // hide the search icon when on MediaDetailFragment
+                val visible = destination.id != R.id.mediaDetailFragment
+                binding.toolbar.menu.findItem(R.id.search).isVisible = visible
             }
         navController.addOnDestinationChangedListener(destinationChangedListener)
     }

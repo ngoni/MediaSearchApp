@@ -14,8 +14,9 @@
     <string name="media_title_text">Title</string>
     <string name="toolbar_title_text">Toolbar Title</string>
     <string name="title_media_list_screen">Media List Screen</string>
-    <string name="serch_content">Search Content</string>
+    <string name="search_content">Search</string>
     <string name="cancel">Cancel</string>
     <string name="search">Search</string>
     <string name="content_description_search">Search</string>
+    <string name="search_hint">Enter Title of Movie or Series</string>
 </resources>

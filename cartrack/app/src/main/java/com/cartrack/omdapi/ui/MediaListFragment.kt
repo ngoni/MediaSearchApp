@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +36,7 @@ class MediaListFragment : Fragment() {
     private lateinit var binding: FragmentMediaListBinding
     private lateinit var navController: NavController
     private lateinit var toolbar: MaterialToolbar
+    private lateinit var searchEditText: AppCompatEditText
     private lateinit var mediaListAdapter: MediaListAdapter
 
     private val viewModel: MediaViewModel by lazy {
@@ -89,10 +92,10 @@ class MediaListFragment : Fragment() {
         MediaListAdapter(callback = callback).also { mediaListAdapter = it }
     }
 
-    private fun searchMedia() {
+    private fun searchMedia(searchText: String) {
         val map: MutableMap<String, String> = mutableMapOf()
         map.apply {
-            put(KEY_SEARCH_TITLE, "fire")
+            put(KEY_SEARCH_TITLE, searchText)
             put(KEY_TYPE, Type.Movie.value)
             put(KEY_API_KEY, API_KEY_VALUE)
         }
@@ -149,19 +152,30 @@ class MediaListFragment : Fragment() {
         }
 
         val positiveBtnListener = fun(dialog: DialogInterface, value: Int) {
+            val searchText = searchEditText.text.toString().trim()
+            if (searchText.isBlank()) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.search_hint),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                searchMedia(searchText)
+            }
             dialog.dismiss()
-            searchMedia()
         }
 
         val customView: View =
             LayoutInflater.from(requireContext()).inflate(R.layout.alertdialog_search_view, null)
+        searchEditText = customView.findViewById(R.id.search_edit_text)
 
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.serch_content))
-            .setView(customView)
-            .setNegativeButton(getString(R.string.cancel), negativeBtnListener)
-            .setPositiveButton(getString(R.string.search), positiveBtnListener)
-            .setCancelable(true)
+        val builder: AlertDialog.Builder = with(AlertDialog.Builder(requireContext())) {
+            setTitle(getString(R.string.search_content))
+            setView(customView)
+            setNegativeButton(getString(R.string.cancel), negativeBtnListener)
+            setPositiveButton(getString(R.string.search), positiveBtnListener)
+            setCancelable(true)
+        }
         builder.create().show()
 
     }
