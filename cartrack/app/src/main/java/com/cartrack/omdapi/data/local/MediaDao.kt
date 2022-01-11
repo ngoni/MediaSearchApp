@@ -12,15 +12,20 @@ import com.cartrack.omdapi.data.entities.SearchContent
 interface MediaDao {
 
     @Query("SELECT * FROM SearchContent")
-    fun getAllMedia() : LiveData<List<SearchContent>>
+    fun getAllMedia(): LiveData<List<SearchContent>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(media: List<SearchContent>)
 
     @Query("SELECT * FROM MediaContent WHERE imdbID = :id")
-    fun getMedia(id: String) : LiveData<MediaContent>
+    fun getMedia(id: String): LiveData<MediaContent>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(media: MediaContent)
 
+    @Query("DELETE FROM SearchContent")
+    fun deleteAllSearchContent()
+
+    @Query("DELETE FROM MediaContent")
+    fun deleteAllMediaContent()
 }

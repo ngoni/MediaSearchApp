@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OmdApi</string>
+    <string name="app_name">MediaApp</string>
     <string name="no_results">No Results To Show</string>
     <string name="imdb">IMDb</string>
     <string name="metascore">Metascore</string>
@@ -14,4 +14,12 @@
     <string name="media_title_text">Title</string>
     <string name="toolbar_title_text">Toolbar Title</string>
     <string name="title_media_list_screen">Media List Screen</string>
+    <string name="search_content">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">Search</string>
+    <string name="search_hint">Enter Title of Movie or Series</string>
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+    <string name="media_type_selection">Select either Movies or Series</string>
 </resources>

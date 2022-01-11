@@ -27,8 +27,8 @@ class MediaDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentMediaDetailBinding
 
-    private val viewModel: MediaViewModel by lazy {
-        ViewModelProvider(this)[MediaViewModel::class.java]
+    private val viewModel: MediaDetailViewModel by lazy {
+        ViewModelProvider(this)[MediaDetailViewModel::class.java]
     }
 
     private val toolBarTitleViewModel: ToolBarTitleViewModel by lazy {
@@ -58,7 +58,7 @@ class MediaDetailFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.media?.observe(viewLifecycleOwner, Observer {
+        viewModel.getMediaDetails().observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     hideProgressBar(binding.progressBar)

@@ -13,13 +13,13 @@ data class SearchContent(
     val title: String,
 
     @SerializedName("Year")
-    val year: String,
+    val year: String? = null,
 
     @SerializedName("Type")
-    val type: Type?,
+    val type: Type? = null,
 
     @SerializedName("Poster")
-    val poster: String
+    val poster: String? = null
 )
 
 enum class Type(val value: String) {
