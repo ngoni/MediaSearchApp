@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatEditText
@@ -37,6 +38,8 @@ class MediaListFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var toolbar: MaterialToolbar
     private lateinit var searchEditText: AppCompatEditText
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var mediaTypeFilter: String
     private lateinit var mediaListAdapter: MediaListAdapter
 
     private val viewModel: MediaViewModel by lazy {
@@ -92,11 +95,11 @@ class MediaListFragment : Fragment() {
         MediaListAdapter(callback = callback).also { mediaListAdapter = it }
     }
 
-    private fun searchMedia(searchText: String) {
+    private fun searchMedia(searchText: String, mediaFilterType: String) {
         val map: MutableMap<String, String> = mutableMapOf()
         map.apply {
             put(KEY_SEARCH_TITLE, searchText)
-            put(KEY_TYPE, Type.Movie.value)
+            put(KEY_TYPE, mediaFilterType)
             put(KEY_API_KEY, API_KEY_VALUE)
         }
         viewModel.searchMedia(map)
@@ -152,7 +155,10 @@ class MediaListFragment : Fragment() {
         }
 
         val positiveBtnListener = fun(dialog: DialogInterface, value: Int) {
+            // Get Search text and selected Media type
             val searchText = searchEditText.text.toString().trim()
+            mediaTypeFilter = setMediaTypeFilter(radioGroup.checkedRadioButtonId)
+
             if (searchText.isBlank()) {
                 Toast.makeText(
                     requireContext(),
@@ -160,14 +166,18 @@ class MediaListFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                searchMedia(searchText)
+                searchMedia(searchText, mediaTypeFilter)
             }
             dialog.dismiss()
         }
 
         val customView: View =
             LayoutInflater.from(requireContext()).inflate(R.layout.alertdialog_search_view, null)
-        searchEditText = customView.findViewById(R.id.search_edit_text)
+
+        with(customView) {
+            searchEditText = findViewById(R.id.search_edit_text)
+            radioGroup = findViewById(R.id.radioGroup)
+        }
 
         val builder: AlertDialog.Builder = with(AlertDialog.Builder(requireContext())) {
             setTitle(getString(R.string.search_content))
@@ -177,6 +187,19 @@ class MediaListFragment : Fragment() {
             setCancelable(true)
         }
         builder.create().show()
+    }
 
+    private fun setMediaTypeFilter(checkedId: Int): String {
+        return when (checkedId) {
+            R.id.movies -> {
+                Type.Movie.value
+            }
+            R.id.series -> {
+                Type.Series.value
+            }
+            else -> {
+                Type.Movie.value
+            }
+        }
     }
 }

@@ -19,4 +19,7 @@
     <string name="search">Search</string>
     <string name="content_description_search">Search</string>
     <string name="search_hint">Enter Title of Movie or Series</string>
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+    <string name="media_type_selection">Select either Movies or Series</string>
 </resources>
