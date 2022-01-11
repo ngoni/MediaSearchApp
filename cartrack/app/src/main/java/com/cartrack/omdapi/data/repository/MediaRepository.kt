@@ -10,6 +10,10 @@ class MediaRepository @Inject constructor(
     private val localDataSource: MediaDao
 ) {
 
+    fun getPreviousSearchResults() = performGetOperation(
+        databaseQuery = { localDataSource.getAllMedia() }
+    )
+
     fun searchMedia(options: Map<String, String>) = performGetOperation(
         databaseQuery = { localDataSource.getAllMedia() },
         networkCall = { remoteDataSource.searchMedia(options) },

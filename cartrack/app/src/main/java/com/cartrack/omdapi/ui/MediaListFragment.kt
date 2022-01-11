@@ -54,6 +54,7 @@ class MediaListFragment : Fragment() {
 
         setupAdapter()
         initViews()
+        observeViewModel()
         shouldPromptUserToSearch()
 
         return binding.root
@@ -102,11 +103,10 @@ class MediaListFragment : Fragment() {
             put(KEY_API_KEY, API_KEY_VALUE)
         }
         viewModel.searchMedia(map)
-        observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.mediaList?.observe(viewLifecycleOwner, Observer {
+        viewModel.getMediaList().observe(requireActivity(), Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     hideProgressBar(binding.progressBar)
@@ -141,6 +141,8 @@ class MediaListFragment : Fragment() {
         val firstTimeLogin = prefs.getBoolean(FIRST_TIME_LOGIN, true)
         if (firstTimeLogin) {
             displaySearchDialog()
+        } else {
+            viewModel.getPreviousSearchResults()
         }
     }
 
