@@ -9,80 +9,80 @@ data class MediaContent(
 
     @PrimaryKey
     val imdbID: String,
-    val imdbRating: String,
-    val imdbVotes: String,
+    val imdbRating: String? = null,
+    val imdbVotes: String? = null,
 
     @SerializedName("Title")
     val title: String,
 
     @SerializedName("Year")
-    val year: String,
+    val year: String? = null,
 
     @SerializedName("Rated")
-    val rated: String,
+    val rated: String? = null,
 
     @SerializedName("Released")
-    val released: String,
+    val released: String? = null,
 
     @SerializedName("Runtime")
-    val runtime: String,
+    val runtime: String? = null,
 
     @SerializedName("Genre")
-    val genre: String,
+    val genre: String? = null,
 
     @SerializedName("Director")
-    val director: String,
+    val director: String? = null,
 
     @SerializedName("Writer")
-    val writer: String,
+    val writer: String? = null,
 
     @SerializedName("Actors")
-    val actors: String,
+    val actors: String? = null,
 
     @SerializedName("Plot")
-    val plot: String,
+    val plot: String? = null,
 
     @SerializedName("Language")
-    val language: String,
+    val language: String? = null,
 
     @SerializedName("Country")
-    val country: String,
+    val country: String? = null,
 
     @SerializedName("Awards")
-    val awards: String,
+    val awards: String? = null,
 
     @SerializedName("Poster")
-    val poster: String,
+    val poster: String? = null,
 
     @SerializedName("Ratings")
-    val ratings: List<Rating>,
+    val ratings: List<Rating>?,
 
     @SerializedName("Metascore")
-    val metascore: String,
+    val metascore: String? = null,
 
     @SerializedName("Type")
-    val type: String,
+    val type: String? = null,
 
     @SerializedName("DVD")
-    val dvd: String,
+    val dvd: String? = null,
 
     @SerializedName("BoxOffice")
-    val boxOffice: String,
+    val boxOffice: String? = null,
 
     @SerializedName("Production")
-    val production: String,
+    val production: String? = null,
 
     @SerializedName("Website")
-    val website: String,
+    val website: String? = null,
 
     @SerializedName("Response")
-    val response: String
+    val response: String? = null
 )
 
 data class Rating(
     @SerializedName("Source")
-    val source: String,
+    val source: String? = null,
 
     @SerializedName("Value")
-    val value: String
+    val value: String? = null
 )
