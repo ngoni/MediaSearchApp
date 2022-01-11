@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_search_24dp.xml" value="0.4197916666666667" />
+        <entry key="app/src/main/res/layout-sw600/fragment_media_detail.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/alertdialog_search_view.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_media_detail.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>
