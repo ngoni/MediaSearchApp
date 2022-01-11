@@ -55,7 +55,6 @@ class MediaListFragment : Fragment() {
         setupAdapter()
         initViews()
         shouldPromptUserToSearch()
-        observeViewModel()
 
         return binding.root
     }
@@ -103,6 +102,7 @@ class MediaListFragment : Fragment() {
             put(KEY_API_KEY, API_KEY_VALUE)
         }
         viewModel.searchMedia(map)
+        observeViewModel()
     }
 
     private fun observeViewModel() {
