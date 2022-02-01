@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.cartrack.omdapi"
+        applicationId "com.scribblex.omdapi"
         minSdk buildVersions.minSdk
         targetSdk buildVersions.targetSdk
         versionCode appVersions.code

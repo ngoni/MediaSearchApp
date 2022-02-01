@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mediaListFragment"
-        android:name="com.cartrack.omdapi.ui.MediaListFragment"
+        android:name="com.scribblex.omdapi.ui.MediaListFragment"
         android:label="MediaListFragment"
         tools:layout="@layout/fragment_media_list">
 
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/mediaDetailFragment"
-        android:name="com.cartrack.omdapi.ui.MediaDetailFragment"
+        android:name="com.scribblex.omdapi.ui.MediaDetailFragment"
         android:label="MediaDetailFragment"
         tools:layout="@layout/fragment_media_detail">
 
